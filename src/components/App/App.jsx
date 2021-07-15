@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+// Import Components
+import Checkout from '../Checkout/Checkout';
+import AdminOrder from '../AdminOrder/AdminOrder';
 
 function App() {
 
@@ -14,7 +17,8 @@ function App() {
       {/* TODO: Setup Routes here*/}
       <img src='images/pizza_photo.png' />
       <p>Pizza is great.</p>
-  
+      <Checkout />
+      <AdminOrder />
     </div>
   );
 }
