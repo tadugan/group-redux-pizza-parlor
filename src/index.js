@@ -13,12 +13,19 @@ import { Provider } from 'react-redux';
 const pizzaReducer =(state = [], action) => {
     if(action.type === 'GET_PIZZA') {
         return [
-            ...action.payload,
+            ...state, action.payload,
         ]
     }
     return state;
 }
 
+const orderReducer = (state = [] action) => {
+    if(action.type === 'ADD TO CART') {
+        return [
+            ...state, action.payload,
+        ]
+
+}
 // storeInstance goes here
 
 
