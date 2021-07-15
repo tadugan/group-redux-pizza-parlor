@@ -10,6 +10,8 @@ import { Provider } from 'react-redux';
 
 // Reducers go here:
 
+
+// Reducer to keep pizzas in global state
 const pizzaReducer =(state = [], action) => {
     if(action.type === 'GET_PIZZA') {
         return [
@@ -19,16 +21,23 @@ const pizzaReducer =(state = [], action) => {
     return state;
 }
 
+// Reducer to keep order in global state
 const orderReducer = (state = [] action) => {
     if(action.type === 'ADD TO CART') {
         return [
             ...state, action.payload,
         ]
-
+    return state;
 }
+
 // storeInstance goes here
-
-
+const storeInstance = createStore{
+    combineReducers({
+        pizzaReducer,
+        orderReducer
+    }),
+    applyMiddleware(logger),
+}
 
 // TODO: add Provider to App
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
