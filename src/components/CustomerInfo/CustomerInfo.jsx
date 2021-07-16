@@ -3,18 +3,19 @@ import axios from "axios";
 import { dispatch } from "react";
 import { useDispatch } from "react-redux";
 import { props } from "bluebird";
+import {useHistory} from 'react-router-dom';
 
 
 function CustomerInfo() {
     
     const dispatch = useDispatch();
+    
+    const history = useHistory();
 
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [zip, setZip] = useState('');
-
-
 
     const onNextClick = () => {
         const customer = {
@@ -29,6 +30,8 @@ function CustomerInfo() {
             type: 'ADD_CUSTOMER',
             payload: customer
         });
+        alert("You are going to the Checkout Screen");
+        history.push('/checkout');
     }
 
     return (
