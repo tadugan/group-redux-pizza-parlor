@@ -23,6 +23,7 @@ function CustomerInfo() {
             city: city,
             zip: zip
         }
+
         console.log('dispatching customer info', customer);
         dispatch({
             type: 'ADD_CUSTOMER',
@@ -39,25 +40,29 @@ function CustomerInfo() {
                 placeholder="Enter Name"
                 value={name}
                 />
+            <br />
             <input
                 type="text"
                 onChange={(event) => setAddress(event.target.value)} 
                 placeholder="Enter Address"
                 value={address}
                 />
+            <br />
             <input 
                 type="text"
                 onChange={(event) => setCity(event.target.value)} 
                 placeholder="Enter City"
                 value={city}
                 />
+            <br />
             <input
                 type="text"
                 onChange={(event) => setZip(event.target.value)} 
                 placeholder="Enter Zip Code" 
                 value={zip}
-                />   
-            <button onClick={onNextClick}>Next</button>
+                />
+            <br />  
+            <button onClick={onNextClick}>Move to Checkout</button>
         </div>
     );
 }

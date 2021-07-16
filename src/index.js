@@ -9,18 +9,14 @@ import { Provider } from 'react-redux';
 
 // Test data for order
 const cart = {
-    pizzas: [
-        {id: 1, quantity: 2 }, 
-        {id: 2, quantity: 3 },
-        {id: 3, quantity: 5 }
-    ],
-    customer_name: 'Tim Dugan',
-    street_address: '777 Oasis Lane',
-    city: 'Minneapolis',
-    state: 'MN',
-    zip: '55557',
-    type: 'Delivery',
-    total: 20
+    pizzas: [],
+    customer_name: '',
+    street_address: '',
+    city: '',
+    state: '',
+    zip: '',
+    type: '',
+    total: 0
 }
 
 const initialState = {
@@ -28,9 +24,16 @@ const initialState = {
 }
 
 // Reducer to keep order in global state
-const orderReducer = (state = {}, action) => {
+const orderReducer = (state = cart, action) => {
     if(action.type === 'ADD_CUSTOMER') {
-        return state, action.payload;
+        const customer = action.payload;
+        return state, {
+            customer_name: customer.customer_name,
+            street_address: customer.street_address,
+            city: customer.city,
+            zip: customer.zip,
+            pizzas: state.pizzas
+        };
     }
     else if (action.type === 'ADD_PIZZA') {
         console.log('in ADD_PIZZA');
