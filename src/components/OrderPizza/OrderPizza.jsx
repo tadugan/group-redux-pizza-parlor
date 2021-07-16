@@ -3,12 +3,24 @@ import React from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
+import {useHistory} from 'react-router-dom';
+// import { HashRouter as Router, Route } from "react-router-dom";
 // import pizzaList from '../pizzaList/pizzaList';
+
+
+
 function OrderPizza() {
 
     const [ pizzaList, setPizzaList ] = useState([]);
 
     const dispatch = useDispatch();
+
+    const history = useHistory();
+
+    function handleClick () {
+        alert("You are going to Customer screen");
+        history.push('/customer');
+    };
 
     useEffect(() => {
         console.log('useEffect');
@@ -70,6 +82,7 @@ function OrderPizza() {
                     ))}
                 </tbody>
             </table>
+            <button onClick={handleClick}>NEXT</button>
         </div>
 
     );
