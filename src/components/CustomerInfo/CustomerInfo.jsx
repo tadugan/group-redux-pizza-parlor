@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Dispatch } from "react";
+import { dispatch } from "react";
 import { useDispatch } from "react-redux";
+import { props } from "bluebird";
 
 
 function CustomerInfo() {
     
     const dispatch = useDispatch();
 
-    let [currentCustomer, setCurrentCustomer] = useState({});
+    let [addCustomer, setAddCustomer] = useState({});
 
     useEffect(() => {
         console.log('in useEffect')
@@ -17,14 +18,24 @@ function CustomerInfo() {
 
 
     const addCustomer = (newCustomer) => {
-        axios({
-            method: 'POST',
-            url: '/orders',
-            data: {id: newCustomer}
-        }).then((response) => {
-            console.log(response);
-        }).catch((err) => {
-            console.log(err);
-        })
-    }
+        orderTestData = {
+        pizzas: [],
+        customer_name: 'John',
+        street_address: '555 Applewood Lane',
+        city: 'Minneapolis',
+        state: 'MN',
+        zip: '55555',
+        type: 'deliver',
+        total: '20'
+        }
+
+    };
+
+    return (
+        <form onSumbit={handleSubmit} />
+            <input onChange={(event) => setAddCustomer({})} />
+    );
 }
+
+
+export default CustomerInfo;
