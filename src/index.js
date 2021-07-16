@@ -10,17 +10,17 @@ import { Provider } from 'react-redux';
 // Test data for order
 const orderTestData = {
     pizzas: [
-        {name: 'Pepperoni', price: 10}, 
-        {name: 'BBQ Chicken', price: 12},
-        {name: 'Supreme', price: 9},
+        {id: 1, quantity: 2 }, 
+        {id: 2, quantity: 3 },
+        {id: 3, quantity: 5 }
     ],
-    firstName: 'Tim',
-    lastName: 'Dugan',
-    street: '777 Oasis Lane',
+    customer_name: 'Tim',
+    street_address: '777 Oasis Lane',
     city: 'Minneapolis',
     state: 'MN',
     zip: '55557',
-    type: 'Delivery'
+    type: 'Delivery',
+    total: 20
 }
 
 // Reducers go here:

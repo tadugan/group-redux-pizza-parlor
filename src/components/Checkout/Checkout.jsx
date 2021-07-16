@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 // Import CSS
 import './Checkout.css';
@@ -15,9 +16,19 @@ function Checkout() {
     }
     
     // Function to handle submitting the order
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
         console.log('Checkout Submit');
         // TODO: add axios POST to here
+        axios({
+            method: 'POST',
+            url: '/api/order',
+            data: currentOrder
+        }).then((response) => {
+            console.log(response);
+        }).catch((err) => {
+            console.log(err);
+        })
     }
 
     return (
