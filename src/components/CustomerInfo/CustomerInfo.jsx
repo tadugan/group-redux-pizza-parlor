@@ -22,7 +22,8 @@ function CustomerInfo() {
             customer_name: name,
             street_address: address,
             city: city,
-            zip: zip
+            zip: zip,
+            type: 'Delivery'
         }
 
         console.log('dispatching customer info', customer);

@@ -15,8 +15,8 @@ const cart = {
     city: '',
     state: '',
     zip: '',
-    type: '',
-    total: 0
+    type: 'Delivery',
+    total: ''
 }
 
 const initialState = {
@@ -27,12 +27,22 @@ const initialState = {
 const orderReducer = (state = cart, action) => {
     if(action.type === 'ADD_CUSTOMER') {
         const customer = action.payload;
+        console.log(action.payload); // test
+
+        let totalCost = 0;
+        for (let pizza of state.pizzas) {
+            
+            totalCost += Number(pizza.price);
+        }
+        console.log(totalCost);
         return state, {
             customer_name: customer.customer_name,
             street_address: customer.street_address,
             city: customer.city,
             zip: customer.zip,
-            pizzas: state.pizzas
+            pizzas: state.pizzas,
+            type: customer.type,
+            total: totalCost
         };
     }
     else if (action.type === 'ADD_PIZZA') {
@@ -40,6 +50,9 @@ const orderReducer = (state = cart, action) => {
         let allPizzas = state.pizzas;
         allPizzas.push(action.payload);
         return state, {pizzas: allPizzas};
+    }
+    else if (action.type === 'CLEAR_ORDER') {
+        return cart;
     }
     return state;
 }

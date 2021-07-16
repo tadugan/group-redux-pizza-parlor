@@ -1,12 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 // Import CSS
 import './Checkout.css';
 
+
 function Checkout() {
 
-    const currentOrder = useSelector(store => store.orderReducer);
+    const history = useHistory();
+
+    const dispatch = useDispatch();
+
+    const currentOrder = useSelector((store) => store.orderReducer);
 
     // Placeholder address data
     let address = {
@@ -26,6 +32,10 @@ function Checkout() {
             data: currentOrder
         }).then((response) => {
             console.log(response);
+            dispatch({
+                type: 'CLEAR_ORDER',
+            })
+            history.push('/');
         }).catch((err) => {
             console.log(err);
         })
@@ -55,8 +65,8 @@ function Checkout() {
                     <tbody>
                             {currentOrder.pizzas.map((pizza, index) => (
                                 <tr key={index}>
-                                    <td>{pizza.customer_name}</td>
-                                    <td>{pizza.total}</td>
+                                    <td>{pizza.name}</td>
+                                    <td>{pizza.price}</td>
                                 </tr>
                             ))}
                     </tbody>

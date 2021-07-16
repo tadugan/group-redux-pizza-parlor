@@ -44,13 +44,17 @@ function OrderPizza() {
     }
     // axios POST pizza order
     
-    const addToCart = (pizzaId) => {
-        console.log('pizzaId');
+    const addToCart = (pizza) => {
+        console.log('pizza');
         dispatch({
             type: 'ADD_PIZZA',
             payload: {
-                id: pizzaId,
-                quantity: 1
+                id: pizza.id,
+                quantity: 1,
+                description: pizza.description,
+                name: pizza.name,
+                price: pizza.price,
+                image_path: pizza.image_path
             }
         });
     }
@@ -73,10 +77,10 @@ function OrderPizza() {
                         <tr key={index}>
                             <td>{pizza.name}</td>
                             <td>{pizza.description}</td>
-                            <td>{pizza.image_path}</td>
+                            <td>Image</td>
                             <td>{pizza.price}</td>
                             <td>
-                                <button onClick={() => addToCart(pizza.id)}>Add Pizza</button>
+                                <button onClick={() => addToCart(pizza)}>Add Pizza</button>
                             </td>
                         </tr>
                     ))}
