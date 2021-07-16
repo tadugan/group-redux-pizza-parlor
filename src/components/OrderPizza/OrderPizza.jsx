@@ -1,7 +1,11 @@
+
 import React from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 // import pizzaList from '../pizzaList/pizzaList';
 function OrderPizza() {
+
+    const dispatch = useDispatch();
     
     // axios GET all pizzas
 function getPizza = () => {
