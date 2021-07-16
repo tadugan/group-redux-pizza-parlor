@@ -8,7 +8,7 @@ function OrderPizza() {
     const dispatch = useDispatch();
     
     // axios GET all pizzas
-function getPizza = () => {
+function getPizza() {
     axios({
         method: 'GET',
         url: '/api/pizza'
