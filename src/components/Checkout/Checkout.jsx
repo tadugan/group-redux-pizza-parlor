@@ -36,9 +36,9 @@ function Checkout() {
             <h2 className="checkout-header">Step 3: Checkout</h2>
             <section className="checkout-customer-info">
                     <p className="checkout-address">
-                        {currentOrder.firstName} {currentOrder.lastName}
+                        {currentOrder.customer_name}
                         <br />
-                        {currentOrder.street}
+                        {currentOrder.street_address}
                         <br />
                         {currentOrder.city}, {currentOrder.state} {currentOrder.zip}
                     </p>
@@ -55,8 +55,8 @@ function Checkout() {
                     <tbody>
                             {currentOrder.pizzas.map((pizza, index) => (
                                 <tr key={index}>
-                                    <td>{pizza.name}</td>
-                                    <td>{pizza.price}</td>
+                                    <td>{pizza.customer_name}</td>
+                                    <td>{pizza.total}</td>
                                 </tr>
                             ))}
                     </tbody>

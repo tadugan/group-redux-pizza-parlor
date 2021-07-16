@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { dispatch } from "react";
 import { useDispatch } from "react-redux";
@@ -9,61 +9,55 @@ function CustomerInfo() {
     
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     getCustomerInfo();
-    // }, [])
+    const [name, setName] = useState('');
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [zip, setZip] = useState('');
 
 
-    onInputChange = (input) => (event) => {
-        this.setState({
-            [input]: event.target.value,
-        });
-    };
 
-
-    onNextClick = (event => {
-        this.props.dispatch({
-            type: 'SET_CUSTOMER_INFO', payload: this.state});
-    })
-
-    const addCustomer = (newCustomer) => {
-        orderTestData = {
-        pizzas: [],
-        customer_name: 'John',
-        street_address: '555 Applewood Lane',
-        city: 'Minneapolis',
-        state: 'MN',
-        zip: '55555',
-        type: 'deliver',
-        total: '20'
+    const onNextClick = () => {
+        const customer = {
+            customer_name: name,
+            street_address: address,
+            city: city,
+            zip: zip
         }
-
-    };
+        console.log('dispatching customer info', customer);
+        dispatch({
+            type: 'ADD_CUSTOMER',
+            payload: customer
+        });
+    }
 
     return (
         <div>
             <h1>Step 2: Customer Info</h1>
             <input 
                 type="text"
-                onChange={this.onInputChange(customer_name)}
+                onChange={(event) => setName(event.target.value)} 
                 placeholder="Enter Name"
+                value={name}
                 />
             <input
                 type="text"
-                onChange={this.onInputChange(street_address)}
+                onChange={(event) => setAddress(event.target.value)} 
                 placeholder="Enter Address"
+                value={address}
                 />
             <input 
                 type="text"
-                onChange={this.onInputChange(city)}
+                onChange={(event) => setCity(event.target.value)} 
                 placeholder="Enter City"
+                value={city}
                 />
             <input
                 type="text"
-                onChange={this.onInputChange(zip)}
+                onChange={(event) => setZip(event.target.value)} 
                 placeholder="Enter Zip Code" 
+                value={zip}
                 />   
-                <button onClick={this.onNextClick}>Next</button>
+            <button onClick={onNextClick}>Next</button>
         </div>
     );
 }
