@@ -32,8 +32,10 @@ function CustomerInfo() {
     };
 
     return (
-        <form onSumbit={handleSubmit} />
+        <>
+        <form onSumbit={handleSubmit}/>
             <input onChange={(event) => setAddCustomer({})} />
+            </>
     );
 }
 
