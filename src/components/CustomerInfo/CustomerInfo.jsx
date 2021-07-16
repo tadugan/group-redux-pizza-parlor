@@ -13,11 +13,13 @@ function CustomerInfo() {
     //     getCustomerInfo();
     // }, [])
 
+
     onInputChange = (input) => (event) => {
         this.setState({
             [input]: event.target.value,
         });
     };
+
 
     onNextClick = (event => {
         this.props.dispatch({
