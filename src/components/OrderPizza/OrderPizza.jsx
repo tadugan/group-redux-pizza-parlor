@@ -6,12 +6,13 @@ import { useState, useEffect } from 'react';
 // import pizzaList from '../pizzaList/pizzaList';
 function OrderPizza() {
 
-    const [ newElement, setNewElement] = useState('');
+    const [ pizzaList, setPizzaList ] = useState([]);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         console.log('useEffect');
+        getPizza();
     }, []);
     
     // axios GET all pizzas
@@ -22,7 +23,8 @@ function OrderPizza() {
     })
     .then((response) => {
         console.log(response.data);
-        dispatch({ type: 'GET_PIZZA', payload: response.data,});
+        // dispatch({ type: 'GET_PIZZA', payload: response.data});
+        setPizzaList(response.data);
     })
     .catch((error) => {
         console.log('GET PIZZA ERROR', error);
@@ -30,15 +32,17 @@ function OrderPizza() {
     }
     // axios POST pizza order
     
-    const addToCart = (event) => {
-        event.preventDefault();
-        console.log(pizza);
+    const addToCart = (pizzaId) => {
+        console.log('pizzaId');
         dispatch({
             type: 'ADD_PIZZA',
-            payload: newPizza
+            payload: {
+                id: pizzaId,
+                quantity: 1
+            }
         });
-        setNewElement('');
     }
+
     return (
         <div className="App">
             <p>Pizza is awesome!</p>
@@ -53,13 +57,17 @@ function OrderPizza() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        {/* <td>{pizza.name}</td>
-                        <td>{pizza.description}</td>
-                        <td>{pizza.image}</td>
-                        <td>{pizza.cost}</td>
-                        <td>button to add for cart</td> */}
-                    </tr>
+                    {pizzaList.map((pizza, index) => (
+                        <tr key={index}>
+                            <td>{pizza.name}</td>
+                            <td>{pizza.description}</td>
+                            <td>{pizza.image_path}</td>
+                            <td>{pizza.price}</td>
+                            <td>
+                                <button onClick={() => addToCart(pizza.id)}>Add Pizza</button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>

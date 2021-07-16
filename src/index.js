@@ -23,25 +23,22 @@ const orderTestData = {
     total: 20
 }
 
-// Reducers go here:
-
-
-// Reducer to keep pizzas in global state
-const pizzaReducer =(state = [], action) => {
-    if(action.type === 'GET_PIZZA') {
-        return [
-            ...state, action.payload,
-        ]
-    }
-    return state;
+const initialState = {
+    pizzas: []
 }
 
 // Reducer to keep order in global state
-const orderReducer = (state = orderTestData, action) => {
+const orderReducer = (state = initialState, action) => {
     if(action.type === 'ADD TO CART') {
         return [
             ...state, action.payload,
         ]
+    }
+    else if (action.type === 'ADD_PIZZA') {
+        console.log('in ADD_PIZZA');
+        let allPizzas = state.pizzas;
+        allPizzas.push(action.payload);
+        return state, {pizzas: allPizzas};
     }
     return state;
 }
@@ -49,7 +46,6 @@ const orderReducer = (state = orderTestData, action) => {
 // storeInstance goes here
 const storeInstance = createStore(
     combineReducers({
-        pizzaReducer,
         orderReducer
     }),
     applyMiddleware(logger),
