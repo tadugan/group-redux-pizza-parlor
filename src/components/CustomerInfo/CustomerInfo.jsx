@@ -14,6 +14,18 @@ function CustomerInfo() {
     // }, [])
 
 
+    onInputChange = (input) => (event) => {
+        this.setState({
+            [input]: event.target.value,
+        });
+    };
+
+
+    onNextClick = (event => {
+        this.props.dispatch({
+            type: 'SET_CUSTOMER_INFO', payload: this.state});
+    })
+
     const addCustomer = (newCustomer) => {
         orderTestData = {
         pizzas: [],
@@ -29,10 +41,30 @@ function CustomerInfo() {
     };
 
     return (
-        <>
-        <form onSumbit={handleSubmit}/>
-            <input onChange={(event) => setAddCustomer({})} />
-            </>
+        <div>
+            <h1>Step 2: Customer Info</h1>
+            <input 
+                type="text"
+                onChange={this.onInputChange(customer_name)}
+                placeholder="Enter Name"
+                />
+            <input
+                type="text"
+                onChange={this.onInputChange(street_address)}
+                placeholder="Enter Address"
+                />
+            <input 
+                type="text"
+                onChange={this.onInputChange(city)}
+                placeholder="Enter City"
+                />
+            <input
+                type="text"
+                onChange={this.onInputChange(zip)}
+                placeholder="Enter Zip Code" 
+                />   
+                <button onClick={this.onNextClick}>Next</button>
+        </div>
     );
 }
 
