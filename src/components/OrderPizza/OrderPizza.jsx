@@ -7,7 +7,7 @@ function OrderPizza() {
 function getPizza = () => {
     axios({
         method: 'GET',
-        url: '/pizza'
+        url: '/api/pizza'
     })
     .then((response) => {
         console.log(response.data);
