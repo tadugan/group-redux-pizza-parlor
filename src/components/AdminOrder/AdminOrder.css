@@ -1,0 +1,23 @@
+.admin-component {
+    width: 80%;
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    margin: auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: lightgray;
+}
+
+th {
+    background-color: grey;
+}
+
+th, td {
+    height: 32px;
+}

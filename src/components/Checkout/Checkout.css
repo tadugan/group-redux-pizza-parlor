@@ -1,0 +1,42 @@
+.checkout-component {
+    width: 80%;
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    margin: auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color: lightgray;
+}
+
+th {
+    background-color: grey;
+}
+
+th, td {
+    height: 32px;
+}
+
+.checkout-header {
+    text-align: left;
+}
+
+.checkout-address {
+    text-align: left;
+    /* display: inline; */
+}
+
+.checkout-order-type {
+    text-align: right;
+    /* display: inline; */
+}
+
+.checkout-total {
+    text-align: right;
+    color: red;
+}
