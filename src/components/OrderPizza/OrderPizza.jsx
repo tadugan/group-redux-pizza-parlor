@@ -11,10 +11,7 @@ function getPizza = () => {
     })
     .then((response) => {
         console.log(response.data);
-//         this.props.dispatch({
-//             type: 'GET_PIZZA',
-//             payload: response.data,
-//         });
+        dispatch({ type: 'GET_PIZZA', payload: response.data,});
     })
     .catch((error) => {
         console.log('GET PIZZA ERROR', error);
