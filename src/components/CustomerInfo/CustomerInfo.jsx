@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { dispatch } from "react";
 import { useDispatch } from "react-redux";
@@ -9,12 +9,9 @@ function CustomerInfo() {
     
     const dispatch = useDispatch();
 
-    let [addCustomer, setAddCustomer] = useState({});
-
-    useEffect(() => {
-        console.log('in useEffect')
-        getCustomerInfo();
-    }, [])
+    // useEffect(() => {
+    //     getCustomerInfo();
+    // }, [])
 
 
     const addCustomer = (newCustomer) => {

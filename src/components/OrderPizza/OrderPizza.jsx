@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import pizzaList from '../pizzaList/pizzaList';
 function OrderPizza() {
 
@@ -10,15 +10,12 @@ function OrderPizza() {
 
     const dispatch = useDispatch();
 
-    useEffect(() => { 
-        console.log('in useEffect');
-        getPizza();
-        },
-        [])
-
+    useEffect(() => {
+        console.log('useEffect');
+    }, []);
     
     // axios GET all pizzas
-function getPizza() {
+    const getPizza = () => {
     axios({
         method: 'GET',
         url: '/api/pizza'
@@ -30,10 +27,10 @@ function getPizza() {
     .catch((error) => {
         console.log('GET PIZZA ERROR', error);
     });
-}
+    }
     // axios POST pizza order
     
-    addToCart = (event) => {
+    const addToCart = (event) => {
         event.preventDefault();
         console.log(pizza);
         dispatch({
@@ -43,10 +40,10 @@ function getPizza() {
         setNewElement('');
     }
     return (
-        <div classname="App">
+        <div className="App">
             <p>Pizza is awesome!</p>
             <table>
-                <th>
+                <thead>
                     <tr>
                         <th>Name</th>
                         <th>Description</th>
@@ -54,16 +51,16 @@ function getPizza() {
                         <th>Cost</th>
                         <th></th>
                     </tr>
+                </thead>
+                <tbody>
                     <tr>
-                        <td>{pizza.name}</td>
+                        {/* <td>{pizza.name}</td>
                         <td>{pizza.description}</td>
                         <td>{pizza.image}</td>
                         <td>{pizza.cost}</td>
-                        {/* <td>button to add for cart</td> */}
+                        <td>button to add for cart</td> */}
                     </tr>
-
-                </th>
-                <PizzaList/>
+                </tbody>
             </table>
         </div>
 

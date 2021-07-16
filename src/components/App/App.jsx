@@ -5,6 +5,8 @@ import './App.css';
 // Import Components
 import Checkout from '../Checkout/Checkout';
 import AdminOrder from '../AdminOrder/AdminOrder';
+import OrderPizza from '../OrderPizza/OrderPizza';
+import CustomerInfo from '../CustomerInfo/CustomerInfo';
 
 function App() {
 
@@ -19,11 +21,10 @@ function App() {
         {/* <img src='images/pizza_photo.png' />
         <p>Pizza is great.</p> */}
         <Route path="/" exact>
-            <p>Step 1:</p>
-            {/* <OrderPizza /> goes here */}
+            <OrderPizza />
         </Route>
         <Route path="/customer" exact>
-            <p>Step 2:</p>
+            <CustomerInfo />
         </Route>
         <Route path="/checkout" exact>
             <Checkout />
